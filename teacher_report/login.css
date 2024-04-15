@@ -1,0 +1,167 @@
+body {
+    background-image: url("../images/main_background.jpg");
+    background-color: #cccccc;
+    text-align: center;
+}
+.header img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.report{
+    width: 70rem;
+    height: 45rem;
+    background-color: #187180;
+    position: absolute;
+    margin-left: 330px;
+    margin-top: 0px;
+    font-size: 24px;
+    color: white;
+    border-radius: 10px;
+}
+
+.report h3{
+    text-align: left;
+    margin-left: 25px;
+}
+
+.context_box {
+    width: 60rem;
+    height: 35rem;
+    background-color: #757a79;
+    margin-left: 80px;
+    border-radius: 20px;
+    border: 3px solid black;
+    
+}
+
+.context_main{
+    height: 100px;
+    width: 250px;
+    margin-top: 70px;
+    margin-left: 20px;
+
+
+}
+
+.context_main select{
+    margin-top: 10px;
+    height: 20px;
+    width: 235px;
+    display: inline;
+}
+
+#student_name{
+    background-color: #757a79;
+    border: 3px solid white;
+    border-width: 0 0 3px 0;
+    width: 230px;
+    height: 30px;
+}
+
+#date_time{
+    margin-top: 5px;
+    width: 230px;
+    height: 30px;
+}
+
+#further_detailes{
+    margin-top: 30px;
+    width: 900px;
+    border: 3px solid black;
+    padding: 10px;
+    background-color: #7d8c8f;
+}
+
+
+#submit_btn{
+    font-size: 20px;
+    width: 9rem;
+    height: 40px;
+    background-color: #560101;
+    color: white;
+    border-radius: 35px;
+    font-family: "Lora", serif;
+    font-size: 16px;
+    margin-left: 26rem;
+    margin-top: 20px;
+    border: 3px solid black;
+}
+
+
+::placeholder{
+    color: white;
+}
+
+
+
+
+.header{
+    padding-top: 25px;
+    padding-left: 30px;
+    justify-content: left;
+    background-color: #187180;
+    width: 250px;
+    height: 80px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.name_role{
+    padding-top: 8px;
+    margin-left: 10px;
+    justify-content: left;
+    color: #ecf3e2;
+}
+
+.header h3{
+    margin: 0;
+    font-size: 22px;
+    display: flex;
+    font-weight: 25px;
+}
+.header h4{
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+}
+
+
+.options{
+    margin-top: 20px;
+    background-color: #187180;
+    width: 200px;
+    height: 170px;
+    border-radius: 20px;
+    justify-content: center;
+}
+.options h2{
+    padding: 10px 0 5px 0;
+    margin: 0;
+    padding-top: 20px;
+    color: #ecf3e2;
+    text-transform: uppercase;
+}
+
+.line{
+    width: 150px;
+    height: 3px;
+    background-color: #cdcfc0;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10px
+}
+
+.options a{
+    padding: 5px;
+    justify-content: center;
+    display: flex;
+    text-decoration: none;
+    color: #ecf3e2;
+}
+
+.options a:hover{
+    font-size: 18px;
+    color: yellow;
+}

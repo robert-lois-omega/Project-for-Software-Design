@@ -1,0 +1,86 @@
+body {
+    background-image: url("../images/main_background.jpg");
+    background-color: #cccccc;
+    text-align: center;
+}
+.header img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.letter{
+    position: absolute;
+    margin-left: 600px;
+    margin-top: 40px;
+    font-size: 24px;
+    color: white;
+}
+.header{
+    padding-top: 25px;
+    padding-left: 30px;
+    justify-content: left;
+    background-color: #187180;
+    width: 250px;
+    height: 80px;
+    margin-top: 20px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.name_role{
+    padding-top: 8px;
+    margin-left: 10px;
+    justify-content: left;
+    color: #ecf3e2;
+}
+
+.header h3{
+    margin: 0;
+    font-size: 22px;
+    display: flex;
+    font-weight: 25px;
+}
+.header h4{
+    margin: 0;
+    font-size: 14px;
+    display: flex;
+}
+
+
+.options{
+    margin-top: 20px;
+    background-color: #187180;
+    width: 200px;
+    height: 170px;
+    border-radius: 20px;
+    justify-content: center;
+}
+.options h2{
+    padding: 10px 0 5px 0;
+    margin: 0;
+    padding-top: 20px;
+    color: #ecf3e2;
+    text-transform: uppercase;
+}
+
+.line{
+    width: 150px;
+    height: 3px;
+    background-color: #cdcfc0;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 10px
+}
+
+.options a{
+    padding: 5px;
+    justify-content: center;
+    display: flex;
+    text-decoration: none;
+    color: #ecf3e2;
+}
+
+.options a:hover{
+    font-size: 18px;
+    color: yellow;
+}
