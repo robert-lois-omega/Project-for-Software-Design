@@ -21,8 +21,6 @@ if ($result->num_rows > 0) {
     $name = $row['Name'];
     $role = $row['role'];
 } 
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +28,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="teacher_view_records.css">
     <link href="https://fonts.cdnfonts.com/css/norwester" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,8 +38,7 @@ if ($result->num_rows > 0) {
 </head>
 <body>
     <div class="report">
-    <form action="update_remarks.php" method="post">
-    <h3>Check Records</h3>
+        <h3>Check Records</h3>
         <div class="context_box">
             <div class="context_main">
                 <table id="record_table">
@@ -50,8 +47,6 @@ if ($result->num_rows > 0) {
                         <th><h2>Date and Time</h2></th>
                         <th><h2>Student Name</h2></th>
                         <th><h2>Offense Made</h2></th>
-                        <th><h2>Further Details</h2></th>
-                        <th><h2>Remarks</h2></th>
                     </tr>
                     <?php
 
@@ -67,9 +62,7 @@ if ($result->num_rows > 0) {
                         }
 
                         // Query to select all rows from the 'hubs' table
-                        $sql = "SELECT rr.report_ID, rr.date_time, rr.student_name, rr.offense_type, rr.further_details, rm.remarks 
-                                FROM report_records rr
-                                INNER JOIN remarks rm ON rr.report_ID = rm.report_ID";
+                        $sql = "SELECT * FROM report_records ORDER BY date_time;";
                         $result = $conn->query($sql);
 
                         // Check if there are rows in the result set
@@ -81,24 +74,11 @@ if ($result->num_rows > 0) {
                                 $date_time = $row['date_time'];
                                 $student_name = $row['student_name'];
                                 $offense_type = $row['offense_type'];
-                                $further_details = $row['further_details'];
-                                $remarks = $row['remarks'];
-
                                 echo "<tr>";
                                 echo "<th><h5>$report_ID</h5></th>";
                                 echo "<th><h5>$date_time</h5></th>";
                                 echo "<th><h5>$student_name</h5></th>";
                                 echo "<th><h5>$offense_type</h5></th>";
-                                echo "<th><h5>$further_details</h5></th>";
-                                if ($remarks == 1){
-                                    echo "<th><label><input type='radio' name='$report_ID' value='1' checked>☑</label>";
-                                    echo "<br>";
-                                    echo "<label><input type='radio' name='$report_ID' value='0'>☒</label>";
-                                } else{
-                                    echo "<th><label><input type='radio' name='$report_ID' value='1'>☑</label>";
-                                    echo "<br>";
-                                    echo "<label><input type='radio' name='$report_ID' value='0' checked>☒</label>";
-                                }
                                 echo "</tr>";
                             }
                         }
@@ -112,7 +92,7 @@ if ($result->num_rows > 0) {
             <img src="../images/school_logo.png" alt="school_logo">
         </div>
         <div class="name_role">
-        <?php
+            <?php
             echo "<h3>$name</h3>";
             echo "<h4>$role</h4>";
             ?>
@@ -123,15 +103,11 @@ if ($result->num_rows > 0) {
         <div class="line">
 
         </div>
-        <a href="../guidance_generate_letter/index.php?username=<?php echo $Username?>">Generate Letter</a>
-        <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
-        <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
+        <a href="../teacher_view_records/index.php?username=<?php echo "$Username"?>">Check Records</a>
+        <a href="../teacher_report/index.php?username=<?php echo "$Username"?>">Create a Report</a>
         <a href="../login/">Logout</a>
     </div>
-    <div class="button_sub">
-        <button>Update Remarks</button>
-    </div>
-</form>
+
 
 </body>
 </html>

@@ -24,14 +24,13 @@ if ($result->num_rows > 0) {
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="guidance_manage_accounts.css">
+    <link rel="stylesheet" href="edit_account.css">
     <link href="https://fonts.cdnfonts.com/css/norwester" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,24 +38,14 @@ if ($result->num_rows > 0) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Nixie+One&display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="report">
-        <h3>Manage Accounts</h3>
+        <h3>Edit an Account</h3>
         <div class="context_box">
             <div class="context_main">
-                <form action="./add_new_account.php?username=<?php echo $Username ?>" method="post">
-                <table id="record_table">
-                    <input type="hidden" name="username" value="<?php $_GET['username'] ?>">
-                    <tr>
-                        <th><h2>Name</h2></th>
-                        <th><h2>Username</h2></th>
-                        <th><h2>Password</h2></th>
-                        <th><h2>Role</h2></th>
-                        <th><h2></h2></th>
-                    </tr>
+                <form action="apply_edit.php?USERNAME=<?php echo $Username?>" method="post">
                     <?php
-
+                        $Username = $_GET['Username'];
                         $host = 'localhost';
                         $username = 'root';
                         $password = '';
@@ -67,35 +56,33 @@ if ($result->num_rows > 0) {
                         if ($conn->connect_error) {
                             die("Connection failed: " . $conn->connect_error);
                         }
-
                         // Query to select all rows from the 'hubs' table
-                        $sql = "SELECT * FROM accounts WHERE 1";
+                        $sql = "SELECT * FROM accounts WHERE username='$Username'";
                         $result = $conn->query($sql);
 
-                        // Check if there are rows in the result set
-                        if ($result->num_rows > 0) {
-                            // Loop through each row
-                            while ($row = $result->fetch_assoc()) {
-                                // Access each column value using the column name
-                                $Name = $row['Name'];
-                                $username = $row['username'];
-                                $password = $row['password'];
-                                $role = $row['role'];
-                                echo "<tr>";
-                                echo "<th><h5>$Name</h5></th>";
-                                echo "<th><h5>$username</h5></th>";
-                                echo "<th><h5>$password</h5></th>";
-                                echo "<th><h5>$role</h5></th>";
-                                echo "<th><a href='edit_account.php?Username=$username&username=$Username'>Edit</a></th>";
-                                echo "</tr>";
-                            }
+                        // Check if the query was successful
+                        if ($result) {
+                            // Fetch the result as an associative array
+                            $row = $result->fetch_assoc();
+                            $Name = $row['Name'];
+                            $Username = $row['username'];
+                            $password = $row['password'];
+                            $role = $row['role'];
+                            echo "<h4>Name</h4>";
+                            echo "<input type='text' name='Name' value='$Name'></input>";
+                            echo "<input type='hidden' name='username' value='$Username'></input>";
+                            echo "<h4>Password</h4>";
+                            echo "<input type='text' name='password' value='$password'></input>";
+                            echo "<h4>Role</h4>";
+                            echo "<select type='text' name='role' value='$role'>";
+                            echo " <option value='Admin'>Admin</option>";
+                            echo " <option value='Teacher'>Teacher</option>";
+                            echo "</select>";
+
                         }
                         ?>
-                </table>
-                <button id="add_account_btn">Add New Account</button>
-                <br>
-                <br>
-            </form>
+                        <button id="edit_account_btn">Submit</button>
+                </form>
             </div>
         </div>
     </div>
