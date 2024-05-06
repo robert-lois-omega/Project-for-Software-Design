@@ -15,6 +15,7 @@ if(isset($_POST['name'], $_POST['offense'], $_POST['datetime'], $_POST['details'
     $offense = $_POST['offense'];
     $datetime = $_POST['datetime'];
     $details = $_POST['details'];
+    $prof_name = $_POST['prof_name'];
     
     $randomVar = generateRandomString();
 
@@ -36,9 +37,9 @@ if(isset($_POST['name'], $_POST['offense'], $_POST['datetime'], $_POST['details'
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "INSERT INTO `report_records`(`report_ID`, `date_time`, `student_name`, `offense_type`, `further_details`) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO `report_records`(`report_ID`, `date_time`, `student_name`, `offense_type`, `further_details`, `reporter`) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssss", $randomVar, $datetime, $name, $offense, $details);
+    $stmt->bind_param("ssssss", $randomVar, $datetime, $name, $offense, $details, $prof_name);
     $stmt->execute();
     // Close connection
     $stmt->close();

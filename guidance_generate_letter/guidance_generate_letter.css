@@ -10,10 +10,12 @@ body {
 }
 
 .report{
-    width: 70%;
-    height: 100%;
+    width: 70rem;
+    height: 45rem;
+    background-color: #187180;
     position: absolute;
     margin-left: 330px;
+    margin-top: 0px;
     font-size: 24px;
     color: white;
     border-radius: 10px;
@@ -22,44 +24,85 @@ body {
 .report h3{
     text-align: left;
     margin-left: 25px;
-    font-size: 36px;
-    font-weight: 112px;
 }
 
 .context_box {
-    width: 100%;
-    height: 50%;
+    width: 60rem;
+    height: 35rem;
+    background-color: #757a79;
+    margin-left: 80px;
+    border-radius: 20px;
+    border: 3px solid black;
     justify-content: center;
+    display: flex;
     
 }
 
 .context_main{
-    height: 10px;
-    width: 100%;
-    margin-left: 15px;
-    display: inline-block;
+    height: 310px;
+    width: 500px;
+    margin-top: 80px;
+    margin-left: 20px;
+    display: flex;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-top: 100px;
+    background-color: #dadcd0;
 }
 
-#record_table{
-    max-width: 100%;
-    min-width: 100%;
+#search_id{
+    width: 400px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 24px;
+    margin: 20px 20px 20px 30px;
+    display: flex;
+    padding-left: 10px;
+
 }
 
-tr:nth-child(1) th{
-    font-size: 12px;
-    background-color: black;
+
+#submit_btn{
+      background-color: #13aa52;
+      border: 1px solid #13aa52;
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+      box-sizing: border-box;
+      color: #fff;
+      cursor: pointer;
+      font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      outline: none;
+      outline: 0;
+      padding: 10px 25px;
+      text-align: center;
+      margin-top: 20px;
 }
 
-table{
-    border:1px solid black;
-    background-color: #757a79;
+#submit_btn:hover{
+    margin-top: 15px;
+    color: yellow;
+}
+    
+
+.footer_note{
+    padding-top: 100px;
+    height: 300px;
+    width: 500px;
 }
 
-th{
-    padding: 2px 10px 2px 10px;
-    border:1px solid black;
-    font-size: 16px;
+.footer_note h1{
+    font-weight: 20px;
+    color: black;
 }
+
+::placeholder{
+    color: gray;
+}
+
+
 
 
 
@@ -133,57 +176,11 @@ th{
     color: yellow;
 }
 
-.button_sub{
-    margin-top: 20px;
-    width: 200px;
-    height: 50px;
-    border-radius: 20px;
-}
-
-.button_sub button{
-    align-items: center;
-    background-clip: padding-box;
+.portal{
+    margin-top: 10%;
+    width: 150px;
+    height: 300px;
     background-color: #187180;
-    border: 2px solid black;
-    border-radius: .25rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
-    font-weight: 700;
     justify-content: center;
-    line-height: 1.25;
-    margin: 0;
-    min-height: 3rem;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-    position: relative;
-    transition: all 250ms;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    width: auto;
-}
-
-.button_sub button:hover{
-    min-height: 3.5rem;
-    color: yellow;
-    
-}
-
-.context_main label {
-    font-size: 18px; /* Change this value to adjust the font size */
-}
-
-#name_search{
-    width: 400px;
-    height: 40px;
-    border-radius: 5px;
-    border: 2px solid black;
-    font-size: 24px;
-    margin: 20px 20px 20px 30px;
-    display: flex;
-    padding-left: 10px;
-
+    text-align: center;
 }

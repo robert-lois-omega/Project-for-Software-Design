@@ -43,7 +43,7 @@ if ($result->num_rows > 0) {
         <h3>Add New Account</h3>
         <div class="context_box">
             <div class="context_main">
-                <form action="apply_add_edit.php" method="post">
+                <form action="apply_add_edit.php?username=<?php echo $Username?>" method="post">
                     <h4>Name</h4>
                     <input type='text' name='Name' placeholder="Name"></input>
                     <h4>Username</h4>
@@ -77,7 +77,7 @@ if ($result->num_rows > 0) {
         <div class="line">
 
         </div>
-        <a href="../guidance_generate_letter/index.php?username=<?php echo $Username?>">Generate Letter</a>
+        <a href="../guidance_search_student/index.php?username=<?php echo $Username?>">Search a Student</a>
         <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
         <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
         <a href="../login/">Logout</a>

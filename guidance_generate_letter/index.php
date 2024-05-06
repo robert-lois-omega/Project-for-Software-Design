@@ -1,4 +1,5 @@
 <?php
+$report_ID = $_GET['report_ID'];
 $Username = $_GET['username'];
 
 $host = 'localhost';
@@ -30,7 +31,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./guidance_generate_letter.css">
     <link href="https://fonts.cdnfonts.com/css/norwester" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,8 +45,8 @@ if ($result->num_rows > 0) {
         <div class="context_box">
             <div class="context_main" method="post">
             <form action="./generate_letter.php?username=<?php echo $Username ?>" method="post" onsubmit="return showLoadingScreen();">
-                <input type="text" name="report_ID" placeholder="Enter Report ID Here" id="search_id">
-                <input type="text" name="Guardians_Name" placeholder="Guardian's Name" id="search_id">
+            <input type="hidden" name='report_ID' value="<?php echo $report_ID?>">
+                <input type='text' name='Guardians_Name' placeholder='Guardian's Name' id='search_id'>
                 <input type="text" name="Guardians_Address" placeholder="Address" id="search_id">
                 <input type="submit" id="submit_btn" value="Generate">
                 </form>
@@ -73,7 +74,7 @@ if ($result->num_rows > 0) {
         <div class="line">
 
         </div>
-        <a href="../guidance_generate_letter/index.php?username=<?php echo $Username?>">Generate Letter</a>
+        <a href="../guidance_search_student/index.php?username=<?php echo $Username?>">Search a Student</a>
         <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
         <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
         <a href="../login/">Logout</a>

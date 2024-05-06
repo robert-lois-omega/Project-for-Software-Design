@@ -1,4 +1,5 @@
 <?php
+$USERNAME = $_GET['username'];
 if(isset($_POST['Name'], $_POST['username'], $_POST['password'], $_POST['role'])) {
     $Name = $_POST['Name'];
     $Username = $_POST['username'];
@@ -7,7 +8,7 @@ if(isset($_POST['Name'], $_POST['username'], $_POST['password'], $_POST['role'])
 
     // Check if any of the fields are empty
     if(empty($Name) || empty($Username) || empty($Password) || empty($Role)) {
-        header('Location: ../guidance_manage_accounts');
+        header("Location: ../guidance_manage_accounts?username=$USERNAME");
         exit(); // Terminate script execution after redirect
     }
 
@@ -30,15 +31,15 @@ if(isset($_POST['Name'], $_POST['username'], $_POST['password'], $_POST['role'])
     // Execute prepared statement
     if ($stmt->execute()) {
         // Redirect upon successful insertion
-        header("Location: ../guidance_manage_accounts?username=$Username");
+        header("Location: ../guidance_manage_accounts?username=$USERNAME");
     } else {
-        header("Location: ../guidance_manage_accounts?username=$Username");
+        header("Location: ../guidance_manage_accounts?username=$USERNAME");
     }
 
     // Close connection
     $stmt->close();
     $conn->close();
 } else {
-    header("Location: ../guidance_manage_accounts?username=$Username");
+    header("Location: ../guidance_manage_accounts?username=$USERNAME");
 }
 ?>

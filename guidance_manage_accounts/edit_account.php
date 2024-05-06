@@ -102,7 +102,7 @@ if ($result->num_rows > 0) {
         <div class="line">
 
         </div>
-        <a href="../guidance_generate_letter/index.php?username=<?php echo $Username?>">Generate Letter</a>
+        <a href="../guidance_search_student/index.php?username=<?php echo $Username?>">Search a Student</a>
         <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
         <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
         <a href="../login/">Logout</a>

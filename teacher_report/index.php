@@ -69,6 +69,7 @@ if ($result->num_rows > 0) {
                 </select>
                 <input type="datetime-local" id="date_time" name="datetime">
                 <textarea name="details" id="further_detailes" cols="30" rows="10" placeholder="Further Detailes..."></textarea>
+                <input type="hidden" name="prof_name" value="<?php echo $name?>">
                 <input type="submit" id="submit_btn">
             </form>
             </div>

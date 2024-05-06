@@ -40,6 +40,53 @@ if ($result->num_rows > 0) {
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Nixie+One&display=swap" rel="stylesheet">
 </head>
 
+<style>
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    display: none;
+}
+
+.loading-icon {
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    border: 3px solid green; 
+}
+.loader {
+  border: 8px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 8px solid pink;
+  border-bottom: 8px solid pink;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+
 <body>
     <div class="report">
         <h3>Manage Accounts</h3>
@@ -86,7 +133,7 @@ if ($result->num_rows > 0) {
                                 echo "<th><h5>$username</h5></th>";
                                 echo "<th><h5>$password</h5></th>";
                                 echo "<th><h5>$role</h5></th>";
-                                echo "<th><a href='edit_account.php?Username=$username&username=$Username'>Edit</a></th>";
+                                echo "<th><hr><a href='edit_account.php?Username=$username&username=$Username'>Edit</a> <hr> <a href='#' onclick='confirmDelete(\"$username\");'>Delete</a><hr></th>";
                                 echo "</tr>";
                             }
                         }
@@ -115,12 +162,39 @@ if ($result->num_rows > 0) {
         <div class="line">
 
         </div>
-        <a href="../guidance_generate_letter/index.php?username=<?php echo $Username?>">Generate Letter</a>
+        <a href="../guidance_search_student/index.php?username=<?php echo $Username?>">Search a Student</a>
         <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
         <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
         <a href="../login/">Logout</a>
     </div>
 
+    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-icon">
+        <div class="loader">
 
+        </div>
+        <div>
+            <h2 style="font-family: 'Dancing Script', cursive; font-size: 18px; font-weight: bold; margin-left: 20px; color: black;">Processing your document...</h2>
+        </div>
+    </div>
+
+</div>
+<script>
+function confirmDelete(username) {
+    // Show a confirmation dialog to the user
+    const confirmation = confirm("Are you sure you want to delete this account?");
+    
+    // If the user confirms deletion
+    if (confirmation) {
+        // Redirect to another page
+        window.location.href = "delete_account.php?username=" + username;
+    }
+}
+
+function hideLoadingScreen() {
+    const loadingScreen = document.getElementById("loadingScreen");
+    loadingScreen.style.display = "none";
+}
+</script>
 </body>
 </html>

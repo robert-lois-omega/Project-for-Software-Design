@@ -134,42 +134,9 @@ th{
 }
 
 .button_sub{
-    margin-top: 20px;
-    width: 200px;
+    margin-left: 500px;
+    width: 300px;
     height: 50px;
-    border-radius: 20px;
-}
-
-.button_sub button{
-    align-items: center;
-    background-clip: padding-box;
-    background-color: #187180;
-    border: 2px solid black;
-    border-radius: .25rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    justify-content: center;
-    line-height: 1.25;
-    margin: 0;
-    min-height: 3rem;
-    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
-    position: relative;
-    transition: all 250ms;
-    touch-action: manipulation;
-    vertical-align: baseline;
-    width: auto;
-}
-
-.button_sub button:hover{
-    min-height: 3.5rem;
-    color: yellow;
-    
 }
 
 .context_main label {
@@ -177,13 +144,10 @@ th{
 }
 
 #name_search{
-    width: 400px;
-    height: 40px;
+    width: 700px;
+    height: 30px;
     border-radius: 5px;
     border: 2px solid black;
     font-size: 24px;
-    margin: 20px 20px 20px 30px;
-    display: flex;
-    padding-left: 10px;
-
+    display: inline-block;
 }
