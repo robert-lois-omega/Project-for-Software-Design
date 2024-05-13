@@ -1,12 +1,13 @@
 <?php
-if(isset($_POST['Name']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role'])) {
+if(isset($_POST['Name']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['role']) && isset($_POST['email'])) {
     $USERNAME = $_GET['USERNAME'];
     $Name = $_POST['Name'];
     $Username = $_POST['username'];
     $Password = $_POST['password'];
+    $email = $_POST['email'];
     $role = $_POST['role'];
 
-    if($Name !== null && $Username !== null && $Password !== null && $role !== null) {
+    if($Name !== null && $Username !== null && $Password !== null && $role !== null && $email !== null) {
         $host = 'localhost';
         $username = 'root';
         $password = '';
@@ -21,7 +22,7 @@ if(isset($_POST['Name']) && isset($_POST['username']) && isset($_POST['password'
         }
 
         // Update query
-        $sql = "UPDATE `accounts` SET `Name`='$Name',`password`='$Password',`role`='$role' WHERE `username`='$Username'";
+        $sql = "UPDATE `accounts` SET `Name`='$Name',`password`='$Password',`role`='$role', `email`='$email' WHERE `username`='$Username'";
         if ($conn->query($sql) === TRUE) {
             echo "Record updated successfully";
             header("Location: ../guidance_manage_accounts/index.php?username=$USERNAME");

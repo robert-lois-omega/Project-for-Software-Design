@@ -68,7 +68,7 @@ th{
     padding-left: 30px;
     justify-content: left;
     background-color: #187180;
-    width: 250px;
+    width: 17rem;
     height: 80px;
     margin-top: 20px;
     border-radius: 20px;
@@ -84,7 +84,7 @@ th{
 
 .header h3{
     margin: 0;
-    font-size: 22px;
+    font-size: 1rem;
     display: flex;
     font-weight: 25px;
 }
@@ -141,13 +141,4 @@ th{
 
 .context_main label {
     font-size: 18px; /* Change this value to adjust the font size */
-}
-
-#name_search{
-    width: 700px;
-    height: 30px;
-    border-radius: 5px;
-    border: 2px solid black;
-    font-size: 24px;
-    display: inline-block;
 }

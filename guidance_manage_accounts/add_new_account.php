@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="edit_account.css">
+    <link rel="stylesheet" href="edit_account2.css">
     <link href="https://fonts.cdnfonts.com/css/norwester" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,6 +80,7 @@ if ($result->num_rows > 0) {
         <a href="../guidance_search_student/index.php?username=<?php echo $Username?>">Search a Student</a>
         <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
         <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
+        <a href="../guidance_statistics/index.php?username=<?php echo $Username?>">View Statistics</a>
         <a href="../login/">Logout</a>
     </div>
     <?php

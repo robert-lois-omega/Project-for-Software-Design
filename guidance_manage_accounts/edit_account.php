@@ -38,6 +38,21 @@ if ($result->num_rows > 0) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Nixie+One&display=swap" rel="stylesheet">
 </head>
+<style>
+.report{
+    width: 70%;
+    height: 40rem;
+    position: absolute;
+    margin-left: 330px;
+    margin-top: 0px;
+    font-size: 24px;
+    color: white;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    border: 2px solid black;
+    
+}
+</style>
 <body>
     <div class="report">
         <h3>Edit an Account</h3>
@@ -67,12 +82,15 @@ if ($result->num_rows > 0) {
                             $Name = $row['Name'];
                             $Username = $row['username'];
                             $password = $row['password'];
+                            $email = $row['email'];
                             $role = $row['role'];
                             echo "<h4>Name</h4>";
                             echo "<input type='text' name='Name' value='$Name'></input>";
                             echo "<input type='hidden' name='username' value='$Username'></input>";
                             echo "<h4>Password</h4>";
                             echo "<input type='text' name='password' value='$password'></input>";
+                            echo "<h4>Email</h4>";
+                            echo "<input type='email' name='email' value='$email'></input>";
                             echo "<h4>Role</h4>";
                             echo "<select type='text' name='role' value='$role'>";
                             echo " <option value='Admin'>Admin</option>";
@@ -105,6 +123,7 @@ if ($result->num_rows > 0) {
         <a href="../guidance_search_student/index.php?username=<?php echo $Username?>">Search a Student</a>
         <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
         <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
+        <a href="../guidance_statistics/index.php?username=<?php echo $Username?>">View Statistics</a>
         <a href="../login/">Logout</a>
     </div>
 

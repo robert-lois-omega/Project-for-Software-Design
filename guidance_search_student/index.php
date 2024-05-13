@@ -50,18 +50,63 @@ input#name_search{
     padding-left: 10px;
 
 }
+
+
+
 .button_sub {
     display: flex; /* Use flexbox */
     align-items: center; /* Center vertically */
-    margin-left: 450px;
+    /* margin-left: 550px; */
 }
 
 .search_bar {
     margin-right: 5px; /* Adjust as needed */
 }
 
-.search_button button {
+.search_button{
     vertical-align: middle; /* Align button vertically with text */
+}
+
+#name_search{
+    width: 500px;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 24px;
+    display: inline-block;
+}
+
+
+.button_sub button{
+    align-items: center;
+    background-clip: padding-box;
+    background-color: #187180;
+    border: 2px solid black;
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    transition: all 250ms;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+}
+
+.button_sub button:hover{
+    min-height: 3.5rem;
+    color: yellow;
+    
 }
 
 
@@ -81,7 +126,7 @@ input#name_search{
                         <input type="hidden" name="username" value="<?php echo $Username?>">            
                     </div>
                     <div class="search_button">
-                        <button>Search</button>
+                        <button id="search_button_style">Search</button>
                     </div>
                 </div>
             </form>
@@ -112,7 +157,7 @@ input#name_search{
                             $sql = "SELECT rr.student_name, COUNT(*) as occurrence_count
                                 FROM report_records rr
                                 INNER JOIN remarks rm ON rr.report_ID = rm.report_ID
-                                WHERE rr.student_name = '$name_search' OR rr.student_name LIKE '$name_search%'
+                                WHERE rr.student_name = '$name_search' OR rr.student_name LIKE '%$name_search%'
                                 GROUP BY rr.student_name
                                 ORDER BY occurrence_count DESC";
                                 
@@ -129,7 +174,7 @@ input#name_search{
                                     echo "<tr>";
                                     echo "<th><h5>$student_name</h5></th>";
                                     echo "<th><h5>$times</h5></th>";
-                                    echo "<th><a href=''>View...</a></th>";
+                                    echo "<th><a href='./profile.php?username=$Username&name_search=$student_name'>View...</a></th>";
                                     echo "</tr>";
                                 }
                             }
@@ -155,7 +200,7 @@ input#name_search{
                                     echo "<tr>";
                                     echo "<th><h5>$student_name</h5></th>";
                                     echo "<th><h5>$times</h5></th>";
-                                    echo "<th><a href=''>View...</a></th>";
+                                    echo "<th><a href='./profile.php?username=$Username&name_search=$student_name'>View...</a></th>";
                                     echo "</tr>";
                                 }
                             }
@@ -185,6 +230,7 @@ input#name_search{
         <a href="../guidance_search_student/index.php?username=<?php echo $Username?>">Search a Student</a>
         <a href="../guidance_manage_accounts/index.php?username=<?php echo $Username?>">Manage Accounts</a>
         <a href="../guidance_view_records/index.php?username=<?php echo $Username?>">Check Records</a>
+        <a href="../guidance_statistics/index.php?username=<?php echo $Username?>">View Statistics</a>
         <a href="../login/">Logout</a>
     </div>
 </body>

@@ -1,5 +1,6 @@
 <?php
-$Username = $_GET['username'];
+$Username = urldecode($_GET['username']);
+$name_search = urldecode($_GET['name_search']);
 
 $host = 'localhost';
 $username = 'root';
@@ -30,7 +31,7 @@ if ($result->num_rows > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./profile.css">
     <link href="https://fonts.cdnfonts.com/css/norwester" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,23 +39,90 @@ if ($result->num_rows > 0) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Nixie+One&display=swap" rel="stylesheet">
 </head>
+<style>
+input#name_search{
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-size: 24px;
+    display: inline-block;
+    padding-left: 10px;
+
+}
+
+
+.first{
+    display: flex;
+    align-items: center; /* Center vertically */
+}
+
+.button_sub {
+    align-items: center; /* Center vertically */
+    display: flex;
+    margin-top: 10px;
+}
+
+#back {
+    width: 60px;
+    height: 60px;
+    margin-right: 10px;
+    background-image: url('../images/icon_back.png');
+    background-size: cover;
+    background-color: #187180;
+    border: none;
+
+}
+
+#back:hover{
+    width: 62px;
+    height: 62px;
+    
+}
+
+.profile_name{
+    margin-top: 10px;
+    margin-right: 30rem;
+    width: 500px;
+    height: 80px;
+}
+
+.profile_name h3{
+    margin: 20px 0 0 20px;
+    font-size: 24px;
+    color: white;
+}
+
+.profile_name h4{
+    margin: 0 0 0 20px;
+    font-size: 12px;
+    color: white;
+}
+
+</style>
 <body>
     <div class="report">
-    <form action="update_remarks.php" method="post">
-    <h3>Check Records</h3>
+        <div class="first">
+            <div class="profile_name">
+                <h3><?php echo $name_search?></h3>
+                <h4>Student</h4>
+            </div>
+            <div class="button_sub">
+                <input type="hidden" name="username" value="<?php echo $Username?>">   
+                <button id="back" onclick="goBack()"></button>
+                <h5>Go Back</h5>
+            </div>
+        </div>
         <div class="context_box">
             <div class="context_main">
                 <table id="record_table">
                     <tr>
-                        <th><h2>Date and Time</h2></th>
-                        <th><h2>Student Name</h2></th>
-                        <th><h2>Offense Made</h2></th>
-                        <th><h2>Reporter</h2></th>
-                        <th><h2>Remarks</h2></th>
-                        <th><h2>Generate Letter</h2></th>
+                        <th><h2>Offense</h2></th>
+                        <th><h2>Degree</h2></th>
+                        <th><h2></h2></th>
                     </tr>
                     <?php
-
+                        
                         $host = 'localhost';
                         $username = 'root';
                         $password = '';
@@ -66,43 +134,33 @@ if ($result->num_rows > 0) {
                             die("Connection failed: " . $conn->connect_error);
                         }
 
+                        if (isset($_GET['name_search'])){
                         // Query to select all rows from the 'hubs' table
-                        $sql = "SELECT rr.report_ID, rr.date_time, rr.student_name, rr.offense_type, rr.reporter, rm.remarks 
+                            $sql = "SELECT rr.offense_type, COUNT(*) as occurrence_count
                                 FROM report_records rr
-                                INNER JOIN remarks rm ON rr.report_ID = rm.report_ID
-                                ORDER BY rr.date_time DESC"; 
-                        $result = $conn->query($sql);
+                                WHERE rr.student_name = '$name_search'
+                                GROUP BY rr.offense_type
+                                ORDER BY occurrence_count DESC"; 
+                            $result = $conn->query($sql);
 
-                        // Check if there are rows in the result set
-                        if ($result->num_rows > 0) {
-                            // Loop through each row
-                            while ($row = $result->fetch_assoc()) {
-                                // Access each column value using the column name
-                                $report_ID = $row['report_ID'];
-                                $date_time = $row['date_time'];
-                                $student_name = $row['student_name'];
-                                $offense_type = $row['offense_type'];
-                                $reporter = $row['reporter'];
-                                $remarks = $row['remarks'];
-
-                                echo "<tr>";
-                                echo "<th><h5>$date_time</h5></th>";
-                                echo "<th><h5>$student_name</h5></th>";
-                                echo "<th><h5>$offense_type</h5></th>";
-                                echo "<th><h5>$reporter</h5></th>";
-                                if ($remarks == 1){
-                                    echo "<th><hr><label style='font-size: 12px; text-align: left;'><input type='radio' name='$report_ID' value='1' checked>Done</label>";
-                                    echo "<hr>";
-                                    echo "<label style='font-size: 12px;'><input type='radio' name='$report_ID' value='0'>Undone</label><hr>";
-                                } else{
-                                    echo "<th><hr><label style='font-size: 12px;'><input type='radio' name='$report_ID' value='1'>Done</label>";
-                                    echo "<hr>";
-                                    echo "<label style='font-size: 12px;'><input type='radio' name='$report_ID' value='0' checked>Undone</label><hr>";
+                            // Check if there are rows in the result set
+                            if ($result->num_rows > 0) {
+                                // Loop through each row
+                                while ($row = $result->fetch_assoc()) {
+                                    // Access each column value using the column name
+                                    $offense_type = $row['offense_type'];
+                                    $times = $row["occurrence_count"];
+    
+    
+                                    echo "<tr>";
+                                    echo "<th><h5>$offense_type</h5></th>";
+                                    echo "<th><h5>$times</h5></th>";
+                                    echo "<th><a href='./report_details.php?username=$Username&name_search=$name_search&offense_type=$offense_type'>View</a></th>";
+                                    echo "</tr>";
                                 }
-                                echo "<th><a href='../guidance_generate_letter/index.php?username=$Username&report_ID=$report_ID'>$report_ID</a></th>";
-                                echo "</tr>";
                             }
                         }
+
                         ?>
                 </table>
             </div>
@@ -130,10 +188,11 @@ if ($result->num_rows > 0) {
         <a href="../guidance_statistics/index.php?username=<?php echo $Username?>">View Statistics</a>
         <a href="../login/">Logout</a>
     </div>
-    <div class="button_sub">
-        <button>Update Remarks</button>
-    </div>
-</form>
 
+<script>
+    function goBack() {
+    window.history.back();
+    }
+</script>
 </body>
 </html>
