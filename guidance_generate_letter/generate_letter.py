@@ -6,8 +6,8 @@ import pymysql
 report_ID = sys.argv[1]
 guardian_name = sys.argv[2]
 address = sys.argv[3]
-# guardian_name = 'Loyola Omega'
-# address = '074, Inaon, Pulilan, Bulacan'
+# guardian_name = 'Juan Dela Cruz'
+# address = '068, Sampaguita, Tondo, Manila'
 # report_ID = '1Y4agP07'
 current_date = datetime.datetime.now()
 formatted_date = current_date.strftime("%B %d, %Y")
